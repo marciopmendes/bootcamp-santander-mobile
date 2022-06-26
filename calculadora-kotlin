@@ -1,0 +1,126 @@
+fun soma():Float{
+    println("Digite o primeiro numero: ")
+    val x:Float? = readLine()?.toFloat()
+    println("Digite o segundo numero: ")
+    val y:Float? = readLine()?.toFloat()
+    return x?.plus(y?:0.0F) ?: run{
+        println("ERRO! Um valor nulo foi digitado")
+        0.0F
+    }
+}
+
+fun subtracao():Float{
+    println("Digite o primeiro numero: ")
+    val x:Float? = readLine()?.toFloat()
+    println("Digite o segundo numero: ")
+    val y:Float? = readLine()?.toFloat()
+    return x?.minus(y?:0.0F) ?: run{
+        println("ERRO! Um valor nulo foi digitado")
+        0.0F
+    }
+}
+
+fun multiplicacao():Float{
+    println("Digite o primeiro numero: ")
+    val x:Float? = readLine()?.toFloat()
+    println("Digite o segundo numero: ")
+    val y:Float? = readLine()?.toFloat()
+    return x?.times(y?:0.0F) ?: run{
+        println("ERRO! Um valor nulo foi digitado")
+        0.0F
+    }
+}
+
+fun divisao():Float{
+    println("Digite o numerador: ")
+    val numerador:Float? = readLine()?.toFloat()
+    println("Digite o denominador: ")
+    val denominador:Float? = readLine()?.toFloat()
+    if(numerador == null || denominador == null){
+        println("ERRO! Um valor nulo foi digitado")
+        return 0.0F
+    }
+    if(denominador == 0.0F){
+        println("Nao e permitido dividir por zero. Ao inves disso, estamos dividindo por 1 para voce.")
+        return numerador.div(1)
+    }
+    return numerador.div(denominador)
+}
+
+fun potencia():Float{
+    println("Digite o valor da base: ")
+    var valor:Float? = readLine()?.toFloat()
+    println("Digite o expoente: ")
+    val expoente:Int? = readLine()?.toInt()
+    if(valor == null || expoente == null){
+        println("ERRO! Um valor nulo foi digitado")
+        return 0.0F
+    }
+    for(contador in 2 until expoente){
+        valor *= valor
+    }
+    return valor
+}
+
+fun porcentagem():Float{
+    println("Digite o valor: ")
+    val valor:Float? = readLine()?.toFloat()
+    println("Digite o percentual: ")
+    val percentual:Float? = readLine()?.toFloat()
+    if(valor == null || percentual == null){
+        println("ERRO! Um valor nulo foi digitado")
+        return 0.0F
+    }
+    return valor.times(percentual/100)
+}
+
+fun restoDivisao():Float{
+    println("Digite o numerador: ")
+    val numerador:Float? = readLine()?.toFloat()
+    println("Digite o denominador: ")
+    val denominador:Float? = readLine()?.toFloat()
+    if(numerador == null || denominador == null){
+        println("ERRO! Um valor nulo foi digitado")
+        return 0.0F
+    }
+    if(denominador == 0.0F){
+        println("Nao e permitido dividir por zero. Ao inves disso, estamos dividindo por 1 para voce.")
+        return numerador % 1
+    }
+    return numerador % denominador
+}
+
+fun fatorial():Int{
+    println("Digite o numero: ")
+    val numero:Int? = readLine()?.toInt()
+    if(numero == 0){
+        return 1
+    }
+    if(numero == null){
+        println("ERRO! Um valor nulo foi digitado")
+        return 0
+    }
+    var valor = numero
+    for(contador in (valor-1) downTo 2){
+        valor *= contador
+    }
+    return valor
+}
+
+fun main() {
+	println("Digite o numero referente a operacao desejada: ")
+	println("1 -> soma" + "\n" + "2 -> subtracao" + "\n" + "3 -> multiplicacao"  + "\n" + "4 -> divisao" + "\n" + "5 -> potencia" + "\n" + "6 -> porcentagem" + "\n" + "7 -> restoDivisao" + "\n" + "8 -> fatorial")
+	val operacao = readLine()
+    var resultado = when (operacao){
+        "1" -> soma()
+        "2" -> subtracao()
+        "3" -> multiplicacao()
+        "4" -> divisao()
+        "5" -> potencia()
+        "6" -> porcentagem()
+        "7" -> restoDivisao()
+        "8" -> fatorial()
+        else -> 0.0F
+    }
+    println(resultado)
+}
